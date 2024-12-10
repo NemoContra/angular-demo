@@ -1,0 +1,12 @@
+<form (submit)="search()">
+  <input type="text" [(ngModel)]="searchQuery" name="search" />
+  <button type="submit">Search</button>
+</form>
+<ul>
+  @for (pokemon of allPokemons(); track pokemon.name) {
+  <li>
+    <span>{{ pokemon.name | json }}</span>
+  </li>
+  }
+</ul>
+<pre>{{ filteredPokemons() | json }}</pre>
