@@ -1,0 +1,18 @@
+<div class="pokedex-container">
+  <button
+    class="pokedex-button"
+    [attr.aria-expanded]="expanded()"
+    aria-controls="pokedex-content"
+    type="button"
+    (click)="toggleExpanded()"
+  >
+    <span class="visually-hidden">Show Pokédex</span>
+    <pokeball [size]="36" />
+  </button>
+
+  <div class="pokedex-content" [attr.aria-hidden]="!expanded()">
+    <ul class="pokedex-list">
+      <!-- PBI #5: Render pokedex -->
+    </ul>
+  </div>
+</div>
