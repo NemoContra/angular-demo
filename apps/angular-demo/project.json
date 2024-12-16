@@ -23,7 +23,12 @@
           }
         ],
         "styles": ["apps/angular-demo/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "server": "apps/angular-demo/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/angular-demo/src/server.ts"
+        },
+        "outputMode": "server"
       },
       "configurations": {
         "production": {
