@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PokemonListResponse } from '../models/pokemon-list-response';
-import { PokemonResponse } from '../models/pokemon-response';
+import { PokemonList } from '../models/pokemon-list';
+import { mapToPokemon, Pokemon } from '../models/pokemon';
+import { map } from 'rxjs';
 
 type GetPokemonParams = {
   limit: number;
@@ -9,7 +10,7 @@ type GetPokemonParams = {
 };
 
 const defaultGetPokemonParams: GetPokemonParams = {
-  limit: 5,
+  limit: 151,
   offset: 0,
 };
 
@@ -18,7 +19,7 @@ export class PokemonService {
   #httpClient = inject(HttpClient);
 
   getPokemonList(params: GetPokemonParams = defaultGetPokemonParams) {
-    return this.#httpClient.get<PokemonListResponse>(
+    return this.#httpClient.get<PokemonList>(
       'https://pokeapi.co/api/v2/pokemon',
       {
         params,
@@ -31,6 +32,8 @@ export class PokemonService {
       .trim()
       .toLowerCase()
       .replace(/\s/g, '')}`;
-    return this.#httpClient.get<PokemonResponse>(url);
+    return this.#httpClient
+      .get<Pokemon>(url)
+      .pipe(map((pokemon) => mapToPokemon(pokemon)));
   }
 }

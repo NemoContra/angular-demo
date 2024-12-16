@@ -1,0 +1,58 @@
+<header-menu />
+<main>
+  <img
+    class="logo"
+    ngSrc="/pokemon-logo.svg"
+    height="99"
+    width="269"
+    priority
+    alt="Pokémon Logo"
+  />
+  <h1>Pokémon Search</h1>
+  <form (submit)="search()" (reset)="reset()">
+    <div class="search">
+      <input type="text" [(ngModel)]="searchQuery" name="search" />
+      <fieldset>
+        <p>Select Species</p>
+        <div class="species">
+          @for (pokemonType of pokemonSpecies() | keyvalue; track
+          pokemonType.key) { @let id = 'species-' + pokemonType.key;
+          <div class="species-select">
+            <input
+              [id]="id"
+              type="checkbox"
+              [value]="pokemonType"
+              [(ngModel)]="pokemonType.value"
+              [name]="id"
+            />
+            <label [for]="id">{{ pokemonType.key | titlecase }}</label>
+          </div>
+          }
+        </div>
+      </fieldset>
+    </div>
+    <div class="actions">
+      <button type="submit">Search</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+  <div class="results">
+    @if (pokemonsLoading()) {
+    <spinner />
+    } @else {
+    <div class="results-length">
+      <p>Found {{ pokemons().length }} Pokémon</p>
+    </div>
+    <div class="pokemon-cards">
+      <!-- Remove the mock data -->
+      <pokemon-card
+        [pokemon]="mockPokemon"
+        [selected]="pokedex()[mockPokemon.name]"
+        (selectedChange)="updatePokedex(mockPokemon, $event)"
+      />
+
+      <!-- Render all pokemons here from real data -->
+    </div>
+    }
+  </div>
+</main>

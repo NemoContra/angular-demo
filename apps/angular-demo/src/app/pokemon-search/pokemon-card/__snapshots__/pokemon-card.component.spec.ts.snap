@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonCardComponent should render with initial inputs 1`] = `
+<pokemon-card
+  pokemon={[Function Function]}
+  selected={[Function Function]}
+>
+  <div
+    class="card"
+  >
+    <div
+      class="content"
+    >
+      <h2>
+        Bulbasaur
+      </h2>
+      <img
+        alt="bulbasaur"
+        fetchpriority="auto"
+        height="96"
+        loading="lazy"
+        ng-img="true"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        width="96"
+      />
+      <dl
+        class="details"
+      >
+        <dt>
+          Type
+        </dt>
+        <dd>
+           Grass
+          , 
+           Poison
+        </dd>
+        <dt>
+          Pokédex No.
+        </dt>
+        <dd>
+          1
+        </dd>
+        <dt>
+          Height
+        </dt>
+        <dd>
+          0.6 m
+        </dd>
+        <dt>
+          Weight
+        </dt>
+        <dd>
+          6.9 kg
+        </dd>
+      </dl>
+    </div>
+    <div
+      class="actions"
+    >
+      <button
+        type="button"
+      >
+         Add Pokémon 
+      </button>
+    </div>
+  </div>
+</pokemon-card>
+`;

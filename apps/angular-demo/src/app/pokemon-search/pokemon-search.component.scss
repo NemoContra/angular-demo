@@ -1,0 +1,172 @@
+:host {
+  --header-height: 50px;
+}
+
+main {
+  padding: calc(var(--header-height) + 16px);
+}
+
+.logo {
+  margin: 0 auto 36px auto;
+  display: block;
+}
+
+.results {
+  display: grid;
+  justify-content: center;
+  margin-block-start: 24px;
+
+  .results-length {
+    text-align: center;
+  }
+}
+
+.pokemon-cards {
+  // create a layout where there cards are aligned horizontally and wrap at the end of the viewport
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #ffcc00;
+  margin-block-end: 24px;
+  text-shadow: 0 0 10px #4a90e2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: 12px;
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1160px;
+  }
+
+  fieldset {
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    padding: 20px;
+    margin-block: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ffcc00;
+    text-align: center;
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      color: #e3350d;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+
+    .species {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px;
+
+      .species-select {
+        margin: 0 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        input[type='checkbox'] {
+          margin: 0;
+          padding: 0;
+          height: 24px;
+          width: 24px;
+          appearance: none;
+          border: 2px solid #ffcc00;
+          border-radius: 50%;
+          outline: none;
+          cursor: pointer;
+
+          &:checked {
+            background: radial-gradient(
+              circle,
+              #ffcc00 0%,
+              #ffcc00 50%,
+              #fff 50%,
+              #fff 100%
+            );
+          }
+        }
+      }
+
+      label {
+        display: flex;
+        place-self: center;
+        justify-content: space-between;
+        width: 60px;
+        gap: 6px;
+        padding-inline-start: 8px;
+        font-size: 16px;
+        color: #333;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  input[type='text'] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ffcc00;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+
+    &:focus-visible {
+      box-shadow: 0 0 10px #ffcc00;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 16px;
+
+    button {
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &[type='submit'] {
+        background-color: #e3350d;
+        border: 2px solid #c8300d;
+        color: #fff;
+
+        &:active {
+          background-color: #cc2900;
+        }
+      }
+
+      &[type='reset'] {
+        background-color: #717171;
+        border: 2px solid #5c5c5c;
+        color: #fff;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
