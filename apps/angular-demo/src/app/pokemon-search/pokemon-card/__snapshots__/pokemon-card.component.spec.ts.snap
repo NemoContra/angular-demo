@@ -30,9 +30,7 @@ exports[`PokemonCardComponent should render with initial inputs 1`] = `
           Type
         </dt>
         <dd>
-           Grass
-          , 
-           Poison
+          Grass, Poison
         </dd>
         <dt>
           Pokédex No.

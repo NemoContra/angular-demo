@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PokemonCardComponent } from './pokemon-card.component';
 import { mockPokemons } from '../../testing/mock-data/pokemons';
+import { By } from '@angular/platform-browser';
 
 describe('PokemonCardComponent', () => {
   let component: PokemonCardComponent;
@@ -24,26 +25,29 @@ describe('PokemonCardComponent', () => {
 
   it('should select the pokemon', () => {
     fixture.componentRef.setInput('selected', true);
-    // detect changes
-    // query the button text
-    const buttonText = '';
+    fixture.detectChanges();
+    const buttonText = (
+      fixture.debugElement.query(By.css('.actions button'))
+        .nativeElement as HTMLButtonElement | null
+    )?.textContent?.trim();
     expect(buttonText).toEqual('Remove Pokémon');
   });
 
   it('should deselect the pokemon', () => {
     fixture.componentRef.setInput('selected', false);
-    // detect changes
-    // query the button text
-    const buttonText = '';
+    fixture.detectChanges();
+    const buttonText = (
+      fixture.debugElement.query(By.css('.actions button'))
+        .nativeElement as HTMLButtonElement | null
+    )?.textContent?.trim();
     expect(buttonText).toEqual('Add Pokémon');
   });
 
   it('should toggle the selected state', () => {
-    const selectedSpy = null as any; // create a spy
+    const selectedSpy = jest.fn();
     component.selected.subscribe(selectedSpy);
-
-    // expect that spy has not been called yet
-    // interaction
-    // expect that spy has been called with boolean value true
+    expect(selectedSpy).not.toHaveBeenCalled();
+    fixture.debugElement.query(By.css('.actions button')).nativeElement.click();
+    expect(selectedSpy).toHaveBeenCalledWith(true);
   });
 });
