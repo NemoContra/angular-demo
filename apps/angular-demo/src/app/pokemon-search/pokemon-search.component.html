@@ -44,14 +44,13 @@
       <p>Found {{ pokemons().length }} Pokémon</p>
     </div>
     <div class="pokemon-cards">
-      <!-- Remove the mock data -->
+      @for(pokemon of pokemons(); track pokemon.name) {
       <pokemon-card
-        [pokemon]="mockPokemon"
-        [selected]="pokedex()[mockPokemon.name]"
-        (selectedChange)="updatePokedex(mockPokemon, $event)"
+        [pokemon]="pokemon"
+        [selected]="pokedex()[pokemon.name]"
+        (selectedChange)="updatePokedex(pokemon, $event)"
       />
-
-      <!-- Render all pokemons here from real data -->
+      }
     </div>
     }
   </div>

@@ -22,7 +22,10 @@ main {
 }
 
 .pokemon-cards {
-  // create a layout where there cards are aligned horizontally and wrap at the end of the viewport
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
 }
 
 h1 {

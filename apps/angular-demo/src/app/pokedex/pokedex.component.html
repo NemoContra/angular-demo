@@ -12,7 +12,11 @@
 
   <div class="pokedex-content" [attr.aria-hidden]="!expanded()">
     <ul class="pokedex-list">
-      <!-- Render a list of all pokemon in the pokedex -->
+      @for(pokemon of pokedex() | keyvalue; track pokemon.key) {
+      <li><pokeball [size]="16" />{{ pokemon.key }}</li>
+      } @empty {
+      <li>No Pokémon in your Pokédex</li>
+      }
     </ul>
   </div>
 </div>

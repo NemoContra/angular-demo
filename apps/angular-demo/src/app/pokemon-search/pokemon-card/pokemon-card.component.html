@@ -1,9 +1,7 @@
 @let cardPokemon = pokemon();
-<!-- Give the card a border with color #e3350d if it is selected -->
-<div class="card">
+<div class="card" [class.selected]="selected()">
   <div class="content">
-    <!-- Render the name of the pokemon in the h2 and format it in titlecase -->
-    <h2>Name here in Titlecase</h2>
+    <h2>{{ cardPokemon.name | titlecase }}</h2>
     <img
       [ngSrc]="cardPokemon.sprites.front_default"
       [alt]="cardPokemon.name"
@@ -13,10 +11,7 @@
 
     <dl class="details">
       <dt>Type</dt>
-      <dd>
-        <!-- List all the types of the pokemon (type.name), separate them by comma -->
-        Fill in types here
-      </dd>
+      <dd>{{ cardPokemon.types | concat : { mapFn: mapType } | titlecase }}</dd>
       <dt>Pokédex No.</dt>
       <dd>{{ cardPokemon.id }}</dd>
       <dt>Height</dt>
@@ -26,10 +21,8 @@
     </dl>
   </div>
   <div class="actions">
-    <!-- Toggle the selection of the pokemon when the button is clicked -->
-    <button type="button">
-      <!-- Render 'Remove Pokémon' or 'Add Pokémon' base on the state of selection  -->
-      Button
+    <button type="button" (click)="toggleSelected()">
+      {{ selected() ? 'Remove' : 'Add' }}
     </button>
   </div>
 </div>

@@ -18,7 +18,9 @@ describe('PokemonCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it.todo('should render with initial inputs');
+  it('should render with initial inputs', () => {
+    expect(fixture).toMatchSnapshot();
+  });
 
   it('should select the pokemon', () => {
     fixture.componentRef.setInput('selected', true);
