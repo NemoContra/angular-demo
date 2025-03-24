@@ -16,19 +16,18 @@ const defaultGetPokemonParams: GetPokemonParams = {
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
+  baseUrl = 'https://pokeapi.co/api/v2/pokemon';
+
   #httpClient = inject(HttpClient);
 
   getPokemonList(params: GetPokemonParams = defaultGetPokemonParams) {
-    return this.#httpClient.get<PokemonList>(
-      'https://pokeapi.co/api/v2/pokemon',
-      {
-        params,
-      }
-    );
+    return this.#httpClient.get<PokemonList>(this.baseUrl, {
+      params,
+    });
   }
 
   getPokemon(name: string) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${name
+    const url = `${this.baseUrl}/${name
       .trim()
       .toLowerCase()
       .replace(/\s/g, '')}`;
